@@ -1,4 +1,4 @@
-# SYSADMIN - LINUX SCRIPT  - FIREBIRD 3.0 - LINUX
+# SYSADMIN - LINUX SCRIPT  - FIREBIRD 3.0 - BACKUP
 
 ## Introduction
 For system administrators (SYSADMIN), efficient database management is crucial to ensure the integrity and availability of critical organizational data. In the context of systems utilizing Firebird as their Database Management System (DBMS), implementing a backup script for their multiple databases becomes a fundamental operational requirement.
