@@ -6,8 +6,7 @@ log_file="/var/log/log.SendDayBack"
 dia_da_semana=$(date +%u)
 # arguments
 localbackfolder="$1"
-servershare="$2"
-localmount="$3"
+localmount="$2"
 
 # local  folder
 localfolder="$localbackfolder/FirebirdBack/day$dia_da_semana"
@@ -20,38 +19,30 @@ log_message() {
 }
 
 # MSG sstart
-msg_inicio() {
+msg_start() {
     log_message "=====================START SEND DAILY BACKUP ============"
 }
 
 # Função para exibir mensagem de término do backup
-msg_termino() {
+msg_end() {
     log_message "=============DAILY BACKUP SENT========="
 }
 
-msg_inicio
+msg_start
 # Check if the number of arguments is correct.
-if [ $# -ne 3 ]; then
-    log_message "Wrong arguments --> Use: $0 /backup/folder/ ip:/folder/of/share/nfs /folder/of/mount"
+if [ $# -ne 2 ]; then
+    log_message "Wrong arguments --> Use: $0 /backup/folder/ /folder/of/mount"
     exit 1
 #fi
 
-# Montar o compartilhamento NFS
-sudo mount -t nfs "$servershare" "$localmount"
-
-# check if mounted
-if [ $? -eq 0 ]; then
-    log_message "Share NFS mounted of $localmount"
-else
-    log_message "Don't possible mount NFS share of $localmount"
-    
-    log_message "=======COPY TO REMOTE FOLDER NOT COMPLETE ========="
-    exit 1
-fi
+#AQUI INCLUIR VERIFICACAO DE ESPACO DISPONIVEL
 
 # 1st deleted content of remote folder refer this day of before backup
-sudo rm -rf "$pasta_destino"/pdv/*
+sudo rm -rf "$destinationfolder"/*
 log_message "Content of $destinationfolder/* deleted"
 
 # Copiar a pasta local para a pasta correspondente ao dia no compartilhamento NFS
 sudo cp -r "$localfolder"/* "$destinationfolder"/
+
+#AQUI INCLUI VERIFICACAO DA INTEGRIDA DA COPIA
+msg_end
