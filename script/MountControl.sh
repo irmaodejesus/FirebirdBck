@@ -15,7 +15,7 @@ log_message() {  echo "$(date +"%Y-%m-%d %T") - $1" >> "$log_file" }
 msg_mount() {   log_message "=====================START MOUNT SHARE FOLD ============"}
 
 # MSG umount
-msg_umount() {  log_message "===================START UMOUNT SHARE FOLDER=============" }
+msg_umount() {  log_message "===================START UMOUNT SHARE FOLDER============="}
 
 if [ "$mountumount" == "mount" ]; then
     msg_mount
@@ -35,8 +35,7 @@ if [ "$mountumount" == "mount" ]; then
        log_message "=======END MOUNT - SUCESS MOUNT SHARE ========="
        exit 0
     else
-       log_message "Don't possible mount NFS share of $localmount"
-    
+       log_message "Don't possible mount NFS share of $localmount"    
        log_message "=======END MOUNT - IMPOSSIBLE MOUNT SHARE ========="
        exit 1
     fi
@@ -58,8 +57,7 @@ elif [ "$mountumount1" == "umount" ]; then
        log_message "=======END UMOUNT - SUCESS UMOUNT SHARE ========="
        exit 0
     else
-       log_message "Don't possible mount NFS share of $localmount"
-    
+       log_message "Don't possible mount NFS share of $localmount"    
        log_message "=======END UMOUNT - IMPOSSIBLE UMOUNT SHARE ========="
        exit 1
     fi
