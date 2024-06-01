@@ -1,4 +1,10 @@
-# SYSADMIN - LINUX SCRIPT  - FIREBIRD 3.0 - BACKUP
+# SYSADMIN - LINUX SCRIPT  - FIREBIRD - BACKUP - DUMP
+
+## LICENSE
+
+Copyright (c) [2024] [EMMANUEL T. PEIXOTO]
+Licensed under the MIT License. See LICENSE file in the project root for full license information.
+ page official of project https://github.com/irmaodejesus/SYSADMIN..FirebirdBck
 
 ## Introduction
 

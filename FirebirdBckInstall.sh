@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright (c) [2024] [EMMANUEL T. PEIXOTO]
+# Licensed under the MIT License. See LICENSE file in the project root for full license information.
+# page official of project https://github.com/irmaodejesus/SYSADMIN..FirebirdBck
+
 sudo touch /var/log/log.firebirdbck.install 
 # File log name.
 log_file="/var/log/log.firebirdbck.install"
@@ -20,7 +24,7 @@ sudo mkdir -p /opt/firebirdbck/day{1..7} /opt/firebirdbck/mount /etc/firebirdbck
 #copiar o arquivo de configuracao mp /etc/firebirbck
 sudo cp script/FirebirdBck.conf /etc/firebirdbck
 sudo cp -f script/*.sh /usr/local/firebirdbck/script
-sudo cp -f *.sh /usr/local/firebirdbck
+sudo cp -f * /usr/local/firebirdbck
 #criando links dos scripts para o /sbin/
 sudo ln -s /usr/local/firebirdbck/script/FirebirdBck.sh /sbin/
 sudo ln -s /usr/local/firebirdbck/script/FirebirdBckCron.sh /sbin/
