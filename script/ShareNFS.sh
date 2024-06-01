@@ -6,6 +6,8 @@ log_file="/var/log/log.FirebirdBck"
 # The name of the service of the database.
 log_message() {  echo "$(date +"%Y-%m-%d %T") - $1" >> "$log_file" }
 
+log_message " ---> EXEC ShareNFS.sh"
+
 # MSG mount
 msg_mount() {   log_message "=====================START MOUNT SHARE FOLD ============"}
 

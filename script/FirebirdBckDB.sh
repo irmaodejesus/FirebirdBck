@@ -8,6 +8,7 @@ log_message() {
     echo "$(date +"%Y-%m-%d %T") - $1" >> "$log_file"
 }
 
+log_message " ---> EXEC FirebirdBckDB.sh"
 
 # Função para exibir mensagem de início do backup
 msg_inicio() {
