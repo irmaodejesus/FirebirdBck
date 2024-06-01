@@ -9,7 +9,7 @@ log_message() {
 }
 
 # Definir o caminho para o arquivo de configuração
-CONFIG_FILE="/etc/FirebirdBck.conf"
+CONFIG_FILE="/etc/firebirdbck/FirebirdBck.conf"
 
 # Verificar se o arquivo de configuração existe
 if [ ! -f "$CONFIG_FILE" ]; then

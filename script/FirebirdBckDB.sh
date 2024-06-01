@@ -20,7 +20,7 @@ msg_termino() {
 }
 
 # Definir o caminho para o arquivo de configuração
-CONFIG_FILE="/etc/FirebirdBck.conf"
+CONFIG_FILE="/etc/firebirdbck/FirebirdBck.conf"
 
 # Verificar se o arquivo de configuração existe
 if [ ! -f "$CONFIG_FILE" ]; then
@@ -41,8 +41,8 @@ test_empty_var() {
     fi
 }
 
-# Definir o caminho para o arquivo de bloqueio
-LOCK_FILE="/tmp/check_instance.lock"
+# O arquivo de bloqueio
+LOCK_FILE="/tmp/FirebirdBckDB.lock"
 
 # Função para remover o arquivo de bloqueio ao sair
 remove_lock() {
@@ -60,15 +60,18 @@ else
     trap remove_lock EXIT 
     trap remove_lock INT TERM
 fi
-test_empty_var "DB_SVC_NAME"
 
+#teste se o nome de serviço foi configurado
+test_empty_var "DB_SVC_NAME"
+#Caminho e nome do banco a ser feito o backup
 DB_NAME="%1"
+#outras variaveis
 DTHR=$(date +%d%b%y-%Hh%M)
 dia_da_semana=$(date +%u)
 
 # Início do backup
 msg_inicio
-# Verificar se o serviço do Firebird está em execução
+# Verificar se o serviço do Firebird foi desligado
 if systemctl is-active --quiet $DB_SVC_NAME; then
     log_message "ERRO: O serviço $DB_SVC_NAME está em execução. Não foi possível realizar o backup."
     msg_termino
@@ -76,7 +79,7 @@ if systemctl is-active --quiet $DB_SVC_NAME; then
 fi
 
 # Realizar backup 
-backup_bd() {
+backup_db() {
     local backup_day="$FOLDER_BKP_LOCAL/day$dia_da_semana/"
     local name_=$(basename "$DB_NAME")
     log_message "Executando o script no $dia_da_semana..."
@@ -101,6 +104,7 @@ backup_bd() {
     #sera adicionado a prx versao.
 }
 
+#realiza o backup
 backup_db
 
 # Término do backup

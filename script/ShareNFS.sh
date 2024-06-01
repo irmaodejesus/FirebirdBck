@@ -16,7 +16,7 @@ msg_umount() {  log_message "===================START UMOUNT SHARE FOLDER=======
 MOUNT_UMOUNT="$1"
 
 # Definir o caminho para o arquivo de configuração
-CONFIG_FILE="/etc/FirebirdBck.conf"
+CONFIG_FILE="/etc/firebirdbck/FirebirdBck.conf"
 
 # Verificar se o arquivo de configuração existe
 if [ ! -f "$CONFIG_FILE" ]; then
@@ -37,12 +37,13 @@ test_empty_var() {
     fi
 }
 
-if [ "$MOUNT_UMOUNT" == "mount" ]; then
-    msg_mount
     test_empty_var "MOUNT_POINT"
     test_empty_var "IP_REMOTE_SERVER"
     test_empty_var "SHARE_NFS"
-    
+
+if [ "$MOUNT_UMOUNT" == "mount" ]; then
+    msg_mount
+
     # mount share NFS in local mount
     sudo mount -t nfs "$IP_REMOTE_SERVER":"$SHARE_NFS" "$MOUNT_POINT"
     
@@ -58,7 +59,6 @@ if [ "$MOUNT_UMOUNT" == "mount" ]; then
     fi
 elif [ "$MOUNT_UMOUNT" == "umount" ]; then
     msg_umount
-    test_empty_var "MOUNT_POINT"
     
     # Umount shre folder NFS
     sudo umount "$MOUNT_POINT"
