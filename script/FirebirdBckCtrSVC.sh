@@ -8,7 +8,7 @@ log_message() {
     echo "$(date +"%Y-%m-%d %T") - $1" >> "$log_file"
 }
 
-log_message " ---> EXEC FirebirdSVC.sh"
+log_message " ---> EXEC FirebirdBckCtrSVC.sh"
 
 # Definir o caminho para o arquivo de configuração
 CONFIG_FILE="/etc/firebirdbck/FirebirdBck.conf"

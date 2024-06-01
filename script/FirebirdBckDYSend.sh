@@ -8,7 +8,7 @@ log_message() {
     echo "$(date +"%Y-%m-%d %T") - $1" >> "$log_file"
 }
 
-log_message " ---> EXEC SendBck.sh"
+log_message " ---> EXEC FirebirdBckDYSend.sh"
 
 # MSG sstart
 msg_start() {  log_message "=====================START SEND DAILY BACKUP ============" }

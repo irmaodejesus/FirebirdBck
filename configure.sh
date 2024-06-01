@@ -1,1 +1,0 @@
-#Aqui configura o arquivo FirebirdBck.conf
