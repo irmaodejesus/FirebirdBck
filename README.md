@@ -12,7 +12,7 @@ With this script in operation, SYSADMINS can enjoy greater peace of mind, knowin
 
 - [Features](#features)
 - [Installation](#installation)
-- [Security Policy](#security policy)
+- [Security Policy](#security)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -37,7 +37,7 @@ git clone https://github.com/irmaodejesus/SYSADMIN.FirebirdBck.git
 cd SYSADMIN.FirebirdBck
 ```
 
-## Security Policy
+## Security
 
 Our security policy can be found at [SECURITY POLICY](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/4264fcd9d1ab3984809decce8f11145b21170d5a/SECURITY.md).
 
