@@ -38,7 +38,7 @@ We are committed to protecting our users and their data. Your reports are critic
 
 For additional resources and information on our security practices, please refer to the following:
 
-- [Project Documentation](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/docs)
+- [Project Documentation](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/tree/f2e623f77f0406d2641edb8175af570f34cc3cff/docs)
 
 ## Acknowledgements
 

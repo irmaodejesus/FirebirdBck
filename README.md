@@ -36,7 +36,7 @@ git clone https://github.com/irmaodejesus/SYSADMIN.FirebirdBck.git
 cd SYSADMIN.FirebirdBck
 ```
 
-## CONTRIBUTING
+## Contributing
 
 Instructions for those who want to contribute to your project. This can include guidelines for submitting issues, creating pull requests, and any coding standards.
 
