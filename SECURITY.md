@@ -9,7 +9,6 @@ We only support the latest version of our project. Please update to the latest v
 | 1.0.0   | :white_check_mark: |
 | <1.0.0   | :x:                |
 
-
 ## Reporting a Vulnerability
 
 If you discover a security vulnerability, please follow the steps below:

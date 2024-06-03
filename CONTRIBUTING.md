@@ -1,4 +1,4 @@
-# Contributing to []
+# Contributing to [FirebirdBck]
 
 Thank you for considering contributing to [FirebirdBck]! Below are some guidelines to help make this process easy and effective for everyone involved.
 
@@ -7,6 +7,7 @@ Thank you for considering contributing to [FirebirdBck]! Below are some guidelin
 ### Reporting Issues
 
 If you find a bug or have a suggestion, please create an issue on [GitHub Issues](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/issues). Include as much detail as possible:
+
 - Description of the issue
 - Steps to reproduce the issue
 - Environment (operating system, software version, etc.)
@@ -30,6 +31,7 @@ Documentation improvements are very welcome! If you find parts of the documentat
 ### Code Style
 
 Keep the code consistent with the existing style in the project. This includes:
+
 - **Indentation**: Use spaces/tabs according to the project's style.
 - **Variable and function names**: Use descriptive and consistent names.
 - **Comments**: Comment your code where necessary to explain complex parts.
@@ -45,4 +47,3 @@ All Pull Requests will go through a review process. One or more maintainers will
 ## Acknowledgements
 
 We appreciate your contributions to improving [FirebirdBck]!
-
