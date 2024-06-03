@@ -10,15 +10,10 @@ With this script in operation, SYSADMINS can enjoy greater peace of mind, knowin
 
 ## Table of Contents
 
-- [License](#license)
 - [Features](#features)
 - [Installation](#installation)
-
-## License
-
-Copyright (c) [2024] [EMMANUEL T. PEIXOTO]
-Licensed under the MIT License. See LICENSE file in the project root for full license information.
-page official of project <https://github.com/irmaodejesus/SYSADMIN.FirebirdBck>
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
@@ -34,6 +29,21 @@ page official of project <https://github.com/irmaodejesus/SYSADMIN.FirebirdBck>
 ```bash
 # Clone the repository
 git clone https://github.com/irmaodejesus/SYSADMIN.FirebirdBck.git
+```
 
+```bash
 # Navigate into the project directory
 cd SYSADMIN.FirebirdBck
+```
+
+## CONTRIBUTING
+
+Instructions for those who want to contribute to your project. This can include guidelines for submitting issues, creating pull requests, and any coding standards.
+
+Please see  [CONTRIBUTING](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/d8346a53c60b7fc8fc1a28178c07ea928b8e02ea/CONTRIBUTING.md)  for more details.
+
+## License
+
+Include information about the licensing of your project. Mention the type of license and provide a link to the license file.
+
+This project is licensed under the MIT License - see the [LICENSE.MD](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/d8346a53c60b7fc8fc1a28178c07ea928b8e02ea/LICENSE) .md file for details.
