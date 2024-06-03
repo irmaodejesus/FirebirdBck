@@ -51,4 +51,4 @@ Please see  [CONTRIBUTING](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/
 
 Include information about the licensing of your project. Mention the type of license and provide a link to the license file.
 
-This project is licensed under the MIT License - see the [LICENSE.MD](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/d8346a53c60b7fc8fc1a28178c07ea928b8e02ea/LICENSE) .md file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/d8346a53c60b7fc8fc1a28178c07ea928b8e02ea/LICENSE) file for details.

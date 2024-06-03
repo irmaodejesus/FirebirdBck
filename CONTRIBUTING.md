@@ -1,6 +1,6 @@
-# Contributing to [FirebirdBck]
+# Contributing to FirebirdBck
 
-Thank you for considering contributing to [FirebirdBck]! Below are some guidelines to help make this process easy and effective for everyone involved.
+Thank you for considering contributing to FirebirdBck! Below are some guidelines to help make this process easy and effective for everyone involved.
 
 ## How Can I Contribute?
 
@@ -46,4 +46,4 @@ All Pull Requests will go through a review process. One or more maintainers will
 
 ## Acknowledgements
 
-We appreciate your contributions to improving [FirebirdBck]!
+We appreciate your contributions to improving FirebirdBck!
