@@ -1,4 +1,4 @@
-# SYSADMIN - FIREBIRD BACKUPER
+# SYSADMIN - FIREBIRDBCK (FIREBIRD BACKUP)
 
 ## Introduction
 
@@ -57,16 +57,6 @@ Firebirdbcks is a backup software specifically designed for Firebird Database se
 - Monitoring: Regular monitoring of backup processes to ensure successful completion and identify any issues.
 - Updates: Periodic updates to the software for enhancements, security patches, and new features.
 - Support: Access to technical support for troubleshooting and resolving any issues related to the backup process.
-
-## Limitations and recommendations for the use of backup scripts
-
-These scripts are designed to create backups of multiple Firebird databases, tested with a total of 150GB and capable of handling growth up to 300GB, in a Linux environment. If the combined size of your databases exceeds 300GB, please use these scripts with caution and communicate their success or failure along with your scenario.
-
-## Requirements of Hardware and Software
-
-This script was developed to be tested in a virtualized environment using the XCP-NG Hypervisor, running on a fully virtualized Linux guest system.
-
-The Linux guest is running Ubuntu 22, equipped with 12GB of memory, network bonded at 2Gbit/s, and configured with 1 CPU comprising 2 cores. Additionally, it features 3 hard drives: one for the operating system, another dedicated to the operational database, and a third drive allocated for supporting daily backup routines.
 
 ## Conclusion
 
