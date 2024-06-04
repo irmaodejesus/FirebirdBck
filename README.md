@@ -8,12 +8,20 @@ This automated script enables sysadmins to perform regular and reliable backups 
 
 With this script in operation, SYSADMINS can enjoy greater peace of mind, knowing that their data is safeguarded by an automated and dependable backup process. Let's begin creating this essential solution for effective Firebird database management.
 
+You can learn more about the system by reading [INTRODUCTION](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/Introduction.md).
+
 ## Table of Contents
 
 - [Features](#features)
 - [Installation](#installation)
+- [Configuration](#configuration)
+- [Uses](#uses)
 - [Security Policy](#security)
+- [Changelog](#changelog)
 - [Contributing](#contributing)
+- [Structure](#structure)
+- [Tests](#tests)
+- [FAQ](#faq)
 - [License](#license)
 
 ## Features
@@ -27,25 +35,41 @@ With this script in operation, SYSADMINS can enjoy greater peace of mind, knowin
 
 ## Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/irmaodejesus/SYSADMIN.FirebirdBck.git
-```
+See how to install [INSTALLATION](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/Installation.md).
 
-```bash
-# Navigate into the project directory
-cd SYSADMIN.FirebirdBck
-```
+## Configuration
+
+How and what settings are necessary for this system to work, you can see in [CONFIGUATION](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/Configuration.md).
+
+## Uses
+
+Examples of use cases of these projects you can check in [USE CASES](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/Uses.md) for more details.
 
 ## Security
 
 Our security policy can be found at [SECURITY POLICY](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/4264fcd9d1ab3984809decce8f11145b21170d5a/SECURITY.md).
+
+## Changelog
+
+To keep track of changes to the project, see [CHANGELOG](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/Changelog.md).
 
 ## Contributing
 
 Instructions for those who want to contribute to your project. This can include guidelines for submitting issues, creating pull requests, and any coding standards.
 
 Please see  [CONTRIBUTING](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/d8346a53c60b7fc8fc1a28178c07ea928b8e02ea/CONTRIBUTING.md)  for more details.
+
+## Structure
+
+To learn more about how the project is structured, see  [PROJECT STRUCTURE](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/Project_Structure.md)  for more details.
+
+## Tests
+
+How to run the project test suite, Please see  [TESTS](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/Tests.md) for more details.
+
+## FAQ
+
+To do and follow the Q&A, see our [FAQ](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/FAQs.md) for more details.
 
 ## License
 
