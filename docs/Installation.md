@@ -16,15 +16,18 @@ The Linux guest is running Ubuntu 22, equipped with 12GB of memory, network bond
 
 ## Installation Steps
 
-1. Clone the repository:
+1.Clone the repository:
 
 ```bash
-   git clone  https://github.com/irmaodejesus/SYSADMIN.FirebirdBck.git
-   cd SYSADMIN.FirebirdBck
+  git clone  https://github.com/irmaodejesus/SYSADMIN.FirebirdBck.git
 ```
 
-2. Install the dependencies:
+```bash
+  cd SYSADMIN.FirebirdBck
+```
+
+2.Install the dependencies:
 
 ```bash
-   dnf install cron vim
+  dnf install cron vim
 ```
