@@ -7,12 +7,16 @@ Detailed information on how to set up the project.
 List of environment variables and their descriptions.
 
 - DB_SVC_NAME # The name of the service of the database.
-- FOLDER_BKP_LOCAL # Name of the local and temporary folder, where the backup will be administered
-- MOUNT_POINT # Name of the local folder where the remote share will be mounted. WARNING: The folder must be empty
-- IP_REMOTE_SERVER # IP name of the remote server where the backup files will be sent
-- SHARE_NFS # Name of the NFS protocol share on the remote server
-- PUBLIC_KEY # File containing the public key used to encrypt the backup
+- FOLDER_BKP_LOCAL # Name of the local and temporary folder, where the backup will be administered.
+- MOUNT_POINT # Name of the local folder where the remote share will be mounted. WARNING: The folder must be empty.
+- IP_REMOTE_SERVER # IP name of the remote server where the backup files will be sent.
+- SHARE_NFS # Name of the NFS protocol share on the remote server.
+- PUBLIC_KEY # File containing the public key used to encrypt the backup.
 - DATABASE_X # path and name of the banks to be backed up.
+
+ATTENTION: If there is more than one database on the same server, you must add a line with the following format: EX: DATABASE_0="/caminho/nomebanco_1.fdb".
+
+If there are more databases, use sequential numbering after the "_" character in the DATABASE_X variable, as in the example: DATABASE_1="/caminho/nomebanco_2.fdb".
 
 ## Configuration Files
 

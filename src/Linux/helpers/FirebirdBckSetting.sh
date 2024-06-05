@@ -5,7 +5,6 @@
 
 #!/bin/bash
 
-
 # File log name.
 log_file="/var/log/log.FirebirdBck"
 
