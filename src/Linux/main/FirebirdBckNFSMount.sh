@@ -19,27 +19,33 @@ msg_mount() {   log_message "=====================START MOUNT SHARE FOLD =======
 # MSG umount
 msg_umount() {  log_message "===================START UMOUNT SHARE FOLDER============="}
 
-# arguments
-MOUNT_UMOUNT="$1"
-
-# Definir o caminho para o arquivo de configuração
-CONFIG_FILE="/etc/firebirdbck/FirebirdBck.conf"
-
-# Verificar se o arquivo de configuração existe
-if [ ! -f "$CONFIG_FILE" ]; then
-    log_message "Arquivo de configuração $CONFIG_FILE não encontrado!"
+# Superuser Verification
+if [ "$EUID" -ne 0 ]; then
+    log_message "This script must be run as root"
     exit 1
 fi
 
-# Carregar o arquivo de configuração
-source $CONFIG_FILE
+# arguments
+MOUNT_UMOUNT="$1"
 
-# Função para testar se uma variável está vazia
+# Set the path to the configuration file
+CONFIG_FILE="/etc/firebirdbck/FirebirdBck.conf"
+
+# Verify that the configuration file exists
+if [ ! -f "$CONFIG_FILE" ]; then
+    log_message "Configuration File $CONFIG_FILE Not Found!"
+    exit 1
+fi
+
+# Upload the configuration file
+source "$CONFIG_FILE"
+
+# Function to test if a variable is empty
 test_empty_var() {
     local var_name="$1"
     local var_value="${!var_name}"
     if [ -z "$var_value" ]; then
-        log_message "A variável '$var_name' está vazia."
+        log_message "The variable "$var_name" is empty."
         exit 1;
     fi
 }
@@ -48,38 +54,37 @@ test_empty_var() {
     test_empty_var "IP_REMOTE_SERVER"
     test_empty_var "SHARE_NFS"
 
+# Help Function
+show_help() {
+    echo "Use: $0 mount|umount"
+    exit 1
+}
+
 if [ "$MOUNT_UMOUNT" == "mount" ]; then
     msg_mount
-
-    # mount share NFS in local mount
-    sudo mount -t nfs "$IP_REMOTE_SERVER":"$SHARE_NFS" "$MOUNT_POINT"
-    
-    # check if mounted
-    if [ $? -eq 0 ]; then
-       log_message "Share NFS mounted of $MOUNT_POINT"
-       log_message "=======END MOUNT - SUCESS MOUNT SHARE ========="
-       exit 0
+    # Mount the NFS share
+    if sudo mount -t nfs "$IP_REMOTE_SERVER:$SHARE_NFS" "$MOUNT_POINT"; then
+        log_message "NFS $IP_REMOTE_SERVER:$SHARE_NFS mounted on  $MOUNT_POINT"
+        log_message "=======END MOUNT - SUCCESS MOUNT SHARE ========="
+        exit 0
     else
-       log_message "Don't possible mount NFS share of  $MOUNT_POINT"    
-       log_message "=======END MOUNT - IMPOSSIBLE MOUNT SHARE ========="
-       exit 1
+        log_message "Failed mount $IP_REMOTE_SERVER:$SHARE_NFS on $MOUNT_POINT"
+        log_message "=======END MOUNT - FAILED TO MOUNT SHARE ========="
+        exit 1
     fi
 elif [ "$MOUNT_UMOUNT" == "umount" ]; then
     msg_umount
-    
-    # Umount shre folder NFS
-    sudo umount "$MOUNT_POINT"
-
-    # check if umounted
-    if [ $? -eq 0 ]; then
-       log_message "Share NFS mounted of $MOUNT_POINT"
-       log_message "=======END UMOUNT - SUCESS UMOUNT SHARE ========="
-       exit 0
+    # Unmount the NFS share
+    if sudo umount "$MOUNT_POINT"; then
+        log_message "NFS share unmounted from $MOUNT_POINT"
+        log_message "=======END UMOUNT - SUCCESS UMOUNT SHARE ========="
+        exit 0
     else
-       log_message "Don't possible mount NFS share of $MOUNT_POINT"    
-       log_message "=======END UMOUNT - IMPOSSIBLE UMOUNT SHARE ========="
-       exit 1
+        log_message "Could not unmount NFS share from $MOUNT_POINT"
+        log_message "=======END UMOUNT - FAILED TO UMOUNT SHARE ========="
+        exit 1
     fi
 else
     log_message "Wrong arguments --> Use: $0 mount|umount "
+    show_help
 fi
