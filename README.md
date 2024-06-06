@@ -69,7 +69,7 @@ How to run the project test suite, Please see  [TESTS](https://github.com/irmaod
 
 ## FAQ
 
-To do and follow the Q&A, see our [FAQ]([https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/FAQs.md](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/discussions/new)) for more details.
+To do and follow the Q&A, see our [FAQ]([https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/8f8dc7f3e6f7bf28e50249e72fb326ab265989d2/docs/FAQs.md](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/discussions/new) for more details.
 
 ## License
 
