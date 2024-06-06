@@ -5,16 +5,52 @@
 
 #!/bin/bash
 
+# Log file name and configuration file defined by environment variables
+log_file="${LOG_FILE:-/var/log/log.FirebirdBck}"
+CONFIG_FILE="${CONFIG_FILE:-/etc/firebirdbck/FirebirdBck.conf}"
 
-# File log name.
-log_file="/var/log/log.FirebirdBck"
+CONFIG_NOT_FOUND_MSG=" Config File $CONFIG_FILE Not Found!"
+EMPTY_VAR_MSG=" The variable '%s' is empty."
+MSG_NO_ROOT=" This script must be run as root"
+L_ERROR="ERROR "
+L_INFO="INFO "
+L_SCES="SUCCESS "
 
-# Function to write log messages
+#  Logging Functions
 log_message() {
-    echo "$(date +"%Y-%m-%d %T") - $1" >> "$log_file"
+    level="$1"
+    message="$2"
+    echo "$(date +"%Y-%m-%d %T") - $level - $message" >> "$log_file"
 }
 
-log_message " ---> EXEC FirebirdBckCron.sh"
+log_message  "$L_INFO" " ---> EXEC FirebirdBckCron.sh"
+
+# Superuser Verification
+if [ "$EUID" -ne 0 ]; then
+    log_message "$L_ERRO" "$MSG_NO_ROOT"
+    exit 1
+fi
+
+# Check if the config file exists
+if [ ! -f "$CONFIG_FILE" ]; then
+    log_message "$L_ERRO" "$CONFIG_NOT_FOUND_MSG"
+    exit 1
+fi
+
+# Upload the configuration file
+source "$CONFIG_FILE"
+
+# Function to test if a variable is empty
+test_empty_var() {
+    local var_name="$1"
+    local var_value="${!var_name}"
+    if [ -z "$var_value" ]; then
+        log_message "$L_ERRO" "$(printf "$EMPTY_VAR_MSG" "$var_name")"
+        exit 1
+    fi
+}
+
+test_empty_var "MOUNT_POINT"
 
 #Aqui entra todo o procedimento de backup.
 # 1 - desliga o servico do banco
