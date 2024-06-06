@@ -6,8 +6,8 @@ SYSADMIN.FirebirdBck
 ├── src/ # Main Project Fonts
 │ ├── Linux/ # Linux program Fonts
 │ | ├── main/
-| | | ├──FirebirdBck.sh # Manually perform any function individually.
-| | | ├──FirebirdBckCron.sh # Runs the backup function in the standard cycle.
+| | | ├──FirebirdBckRestory.sh # Restory database.
+| | | ├──FirebirdBckNFS.sh # Backup and send NFS.
 | | | ├──FirebirdBckCtrSVC.sh # Turn the backup service on and off.
 | | | ├──FirebirdBckDB.sh # Makes the dp DB backup presented.
 | | | └──FirebirdBckNFSMount.sh # Mount the NFS share.

@@ -23,7 +23,7 @@ log_message() {
     echo "$(date +"%Y-%m-%d %T") - $level - $message" >> "$log_file"
 }
 
-log_message  "$L_INFO" " ---> EXEC FirebirdBckCron.sh"
+log_message  "$L_INFO" " ---> EXEC FirebirdBckRestory.sh"
 
 # Superuser Verification
 if [ "$EUID" -ne 0 ]; then
@@ -51,24 +51,3 @@ test_empty_var() {
 }
 
 test_empty_var "MOUNT_POINT"
-
-#Aqui entra todo o procedimento de backup.
-# 1 - desliga o servico do banco
-
-# 2 - faz dayrotation local
-
-# 3 - faz o backup de todos os bancos
-
-# 4 - monta repositorio remoto
-
-# 5 - envia a copia do dia para o remoto
-
-# 6 - faz o day rotation remoto
-
-# 7 - faz o week rotation remoto 
-
-# 8 - faz o month rotation remoto 
-
-# 9 - desmonta o compartilhamento remoto
-
-# 10 - inicia os servicos do banco
