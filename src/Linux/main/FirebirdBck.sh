@@ -51,3 +51,64 @@ test_empty_var() {
 }
 
 test_empty_var "MOUNT_POINT"
+test_empty_var "FOLDER_BKP_LOCAL"
+test_empty_var "DATABASE_0"
+
+
+# Função para chamar os scripts
+chamar_script() {
+    # Chama o script passado como argumento
+    cd /opt
+    ./"$1"
+
+    # Verifica se o script terminou com sucesso
+    if [ $? -eq 0 ]; then
+        log_message "$1 executado com sucesso."
+    else
+        log_message "Erro: $1 falhou."
+        exit 1  # Sai do script se um dos scripts falhar
+    fi
+}
+
+msg_inicio
+
+# Tamanho mínimo desejado em bytes (100 GB = 107374182400 bytes)
+tamanho_minimo=100651956
+
+# Obtém o tamanho do sistema de arquivos montado em bytes
+tamanho=$(df --output=avail "$FOLDER_BKP_LOCAL" | tail -n 1)
+
+# Verifica se o tamanho é maior que o mínimo desejado
+if [ "$tamanho" -gt "$tamanho_minimo" ]; then
+    log_message "O volume montado em $FOLDER_BKP_LOCAL é maior que 100 GB."
+    # Chama os quatro scripts
+    log_message "Fazendo rotation local."
+    chamar_script FirebirdBckDYLocRot.sh
+    log_message "parando o firebird."
+    chamar_script FirebirdBckCtrSVC.sh stop
+    log_message "nciciando backup DB"
+    chamar_script FirebirdBckDB.sh $DATABASE_0
+    log_message "inciando o servico do firebird."
+    chamar_script FirebirdBckCtrSVC.sh start
+    log_message "Montando NFS"
+    chamar_script FirebirdBckNFSMount.sh mount
+    log_message "inciando o envio do backup."
+    chamar_script FirebirdBckDYSend.sh
+    log_message "Desmontando NFS."
+    chamar_script FirebirdBckNFSMount.sh umount
+    log_message "Todos os scripts foram executados com sucesso."
+    msg_termino
+    exit 0
+    #exit 0  # Sai do script, já que o volume é grande o suficiente
+else
+    log_message "O volume montado em $FOLDER_BKP_LOCAL não atende ao tamanho mínimo desejado de 100 GB."
+    exit 1  # Sai do script, já que o volume não é grande o suficiente
+fi
+
+# case um unico banco banco nome
+# case daiario no cron envio NFS
+# case mensal rotation
+# case semnal totaion
+# case daiario no cron sem envio
+# case diario no cron envio sftp
+# case diario no cron envio scp
