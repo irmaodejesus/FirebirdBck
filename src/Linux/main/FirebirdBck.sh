@@ -3,7 +3,7 @@
 # page official of project https://github.com/irmaodejesus/SYSADMIN.FirebirdBck
 
 
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Log file name and configuration file defined by environment variables
 log_file="${LOG_FILE:-/var/log/log.FirebirdBck}"
@@ -54,19 +54,33 @@ test_empty_var "MOUNT_POINT"
 test_empty_var "FOLDER_BKP_LOCAL"
 test_empty_var "DATABASE_0"
 
-
-# Função para chamar os scripts
-chamar_script() {
-    # Chama o script passado como argumento
-    cd /opt
+# Function to call the scripts
+call_script() {
+    # Calls the passed script as an argument
+    cd /sbin
     ./"$1"
 
-    # Verifica se o script terminou com sucesso
+    # Verifies that the script has finished successfully
     if [ $? -eq 0 ]; then
-        log_message "$1 executado com sucesso."
+        log_message "$L_SCES" " $1" 
     else
-        log_message "Erro: $1 falhou."
-        exit 1  # Sai do script se um dos scripts falhar
+        log_message "$L_ERRO" " $1"
+        exit 1  # Exits the script if one of the scripts fails
+    fi
+}
+
+# Function to call the scripts
+call_script() {
+    # Calls the passed script as an argument
+    cd /sbin
+    ./"$1"
+
+    # Verifies that the script has finished successfully
+    if [ $? -eq 0 ]; then
+        log_message "$L_SCES" " $1" 
+    else
+        log_message "$L_ERRO" " $1"
+        exit 1  # Exits the script if one of the scripts fails
     fi
 }
 
@@ -105,9 +119,35 @@ else
     exit 1  # Sai do script, já que o volume não é grande o suficiente
 fi
 
+# Control Logic
+case "$1" in
+    mo_rotation)
+        log_message "$L_INFO" "$START_MSG"
+
+        ;;
+    wk_rotation)
+        log_message "$L_INFO" "$START_MSG1"
+        ;;
+    send_nfs)
+        log_message "$L_INFO" "$START_MSG1"
+        ;;
+    send_sftp)
+        log_message "$L_INFO" "$START_MSG1"
+        ;;        
+    restory_nfs)
+        log_message "$L_INFO" "$START_MSG1"
+        ;;     
+    Setting)
+        log_message "$L_INFO" "$START_MSG1"
+        ;;                   
+    *)
+        log_message "$L_ERRO" " --> Use: $0 mount|umount "
+        show_help
+        ;;
+esac    
+
 # case um unico banco banco nome
-# case daiario no cron envio NFS
-# case mensal rotation
+
 # case semnal totaion
 # case daiario no cron sem envio
 # case diario no cron envio sftp

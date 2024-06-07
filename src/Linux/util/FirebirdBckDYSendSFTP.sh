@@ -16,8 +16,11 @@ L_ERROR="ERROR "
 L_INFO="INFO "
 L_SCES="SUCCESS "
 
-START_MSG="====== GETTING STARTED SAVES SPACE DY REM ======"
-STOP_MSG="======== FINISHED SAVES SPACE DY REM ======="
+START_MSG="=====================START SEND DAILY BACKUP ============"
+STOP_MSG="=====================START SEND DAILY BACKUP ============"
+
+# Get the day of the week (1 to 7, where 1 is Monday and 7 is Sunday).
+dia_da_semana=$(date +%u)
 
 #  Logging Functions
 log_message() {
@@ -26,7 +29,7 @@ log_message() {
     echo "$(date +"%Y-%m-%d %T") - $level - $message" >> "$log_file"
 }
 
-log_message  "$L_INFO" " ---> EXEC FirebirdBckDYRemRot.sh"
+log_message  "$L_INFO" " ---> EXEC FirebirdBckDYSend.sh"
 
 # Superuser Verification
 if [ "$EUID" -ne 0 ]; then
@@ -53,7 +56,7 @@ test_empty_var() {
     fi
 }
 
-# Checking the required variable
+test_empty_var "FOLDER_BKP_LOCAL"
 test_empty_var "MOUNT_POINT"
 test_empty_var "IP_REMOTE_SERVER"
 test_empty_var "SHARE_NFS"
@@ -83,25 +86,24 @@ for ((i=1; i<=total_pastas; i++)); do
     fi
 done
 
-# Define the folders that contain the local backups
-pastas=("$MOUNT_POINT/firebirdbck/day1" "$MOUNT_POINT/firebirdbck/day2" "$MOUNT_POINT/firebirdbck/day3" "$MOUNT_POINT/firebirdbck/day4" "$MOUNT_POINT/firebirdbck/day5" "$MOUNT_POINT/firebirdbck/day6" "$MOUNT_POINT/firebirdbck/day7")
-# Get the current day and the previous two days
-hoje=$(date +%u)
-dia_anterior1=$(( (hoje + 6 - 1) % 7 + 1 ))
-dia_anterior2=$(( (hoje + 6 - 2) % 7 + 1 ))
-# Keep content from the current day and the previous two days
-pastas_a_manter=("$MOUNT_POINT/firebirdbck/day$hoje" "$MOUNT_POINT/firebirdbck/day$dia_anterior1" "$MOUNT_POINT/firebirdbck/day$dia_anterior2")
+# INCLUIR AQUI FUNCAO PARA VERIFICAR SE A FOLDER DE ORIGEM ESTA VAZIA.
+
+# local  folder
+localfolder="$FOLDER_BKP_LOCAL/day$dia_da_semana"
+# destination folder folder
+remotefolder="$MOUNT_POINT/firebirdbck/day$dia_da_semana"
 
 log_message "$L_INFO" "$START_MSG"
 
-# Check to see if a folder is in the list of folders to keep.
-for pasta in "${pastas[@]}"; do
-    if [[ " ${pastas_a_manter[*]} " == *" $pasta "* ]]; then
-        log_message "$L_INFO" "Content held in $pasta"
-    else
-        rm -rf "$pasta"/* 
-        log_message "$L_SCES" "Deleted content from $pasta"
-    fi
-done
+# AQUI INCLUIR FUNCAO DE VERIFICACAO DE ESPACO DISPONIVEL
 
-log_message "$L_INFO" "$STOP_MSG"
+# 1st deleted content of remote folder refer this day of before backup
+sudo rm -rf "$remotefolder"/*
+log_message "$L_SCES" "Content deleted $remotefolder/* "
+
+# Copy the local folder to the folder corresponding to the day
+sudo cp -r "$localfolder"/* "$remotefolder"/
+log_message "$L_SCES" "Backup copied to $remotefolder"
+
+#AQUI INCLUI VERIFICACAO DA INTEGRIDADE DA COPIA
+log_message "$L_SCES" "$STOP_MSG"

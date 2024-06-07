@@ -3,7 +3,7 @@
 # page official of project https://github.com/irmaodejesus/SYSADMIN.FirebirdBck
 
 
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Constants
 # Log file name and configuration file defined by environment variables

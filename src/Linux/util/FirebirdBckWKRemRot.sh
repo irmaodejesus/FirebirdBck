@@ -3,7 +3,8 @@
 # page official of project https://github.com/irmaodejesus/SYSADMIN.FirebirdBck
 
 
-#!/bin/bash
+#!/usr/bin/env bash
+
 # Log file name and configuration file defined by environment variables
 log_file="${LOG_FILE:-/var/log/log.FirebirdBck}"
 CONFIG_FILE="${CONFIG_FILE:-/etc/firebirdbck/FirebirdBck.conf}"
