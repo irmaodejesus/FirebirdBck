@@ -39,7 +39,6 @@ SYSADMIN.FirebirdBck
 │ ├── Uses.md # Examples of Use
 │ ├── Configuration.md # How to set up the project.
 │ ├── Tests.md # How to run the project test suite.
-│ ├── FAQs.md # Instructions for adding new tests to the project.
 │ └── Changelog.md # Record of all important changes in the project.
 ├── configs/ # configurations files.
 │ └── FirebirdBck.conf # Main configuration file.
