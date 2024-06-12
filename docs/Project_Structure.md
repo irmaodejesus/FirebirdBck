@@ -6,19 +6,16 @@ SYSADMIN.FirebirdBck
 ├── src/ # Main Project Fonts
 │ ├── Linux/ # Linux program Fonts
 │ | ├── main/
-| | | ├──FirebirdBckRestory.sh # Restory database.
-| | | ├──FirebirdBckNFS.sh # Backup and send NFS.
-| | | ├──FirebirdBckCtrSVC.sh # Turn the backup service on and off.
-| | | ├──FirebirdBckDB.sh # Makes the dp DB backup presented.
-| | | └──FirebirdBckNFSMount.sh # Mount the NFS share.
+| | | └──FirebirdBck.sh # Main system backup.
 │ | ├── helpers/
 | | | |__FirebirdBckSetting.sh # Populates the variables in the system configuration file.
 │ | └── util/
-| |   ├──FirebirdBckDYLocRot.sh # rotates the backup daily on local storage.
-| |   ├──FirebirdBckDYRemRot.sh # rotates the backup daily on remote storage.
-| |   ├──FirebirdBckDYSend.sh # Sends the daily backup to the remote storage.
-| |   ├──FirebirdBckMORemRot.sh # rotates the monthly backup on remote storage.
-| |   └──FirebirdBckWKRemRot.sh # rotates the weekly backup on remote storage.
+| |   ├──FirebirdBck_Restory.sh # Function Restory database.
+| |   ├──FirebirdBck_DB.sh # Function DB backups.
+| |   ├──FirebirdBck_Rotation.sh # Function rotation backups.
+| |   ├──FirebirdBck_MSG.env # All menssagens e variables.
+| |   ├──FirebirdBck_send.sh # Functions send remote backups.
+| |   └──FirebirdBck_util.sh # Functions utils for the system.
 │ └── Windows/ # Windows program Fonts
 │   ├── main/
 │   ├── helpers/

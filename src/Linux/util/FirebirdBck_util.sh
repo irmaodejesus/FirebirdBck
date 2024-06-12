@@ -5,19 +5,28 @@
 
 #!/usr/bin/env bash
 
+#**************************************************************
 #  Logging Functions
+#
+#**************************************************************
 log_message() {
     level="$1"
     message="$2"
     echo "$(date +"%Y-%m-%d %T") - $level - $message" >> "$LOG_FILE"
 }
 
-# send to log file exe
+#**************************************************************
+# send to log file exec
+#
+#**************************************************************
 _log__send_exec_file() {
     log_message  "$L_INFO" " ---> $1"
 }
 
+#**************************************************************
 # Superuser Verification
+# 
+#**************************************************************
 _is_root() {
 if [ "$EUID" -ne 0 ]; then
     log_message "$L_ERRO" "$MSG_NO_ROOT"
@@ -25,8 +34,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 }
 
-# Function to call the scripts
+#**************************************************************
 # Check if the config file exists
+# 
+#**************************************************************
 _exist_config_file(){
 if [ ! -f "$CONFIG_FILE" ]; then
     log_message "$L_ERRO" "$CONFIG_NOT_FOUND_MSG"
@@ -34,10 +45,10 @@ if [ ! -f "$CONFIG_FILE" ]; then
 fi
 }
 
-#***************************************
+#**************************************************************
 # Checks if the variable is empty
-#
-#***************************************
+# 
+#**************************************************************
 _test_empty_var() {
     local var_name="$1"
     local var_value="${!var_name}"
@@ -67,7 +78,7 @@ _call_script() {
 }
 
 #**************************************************************
-# 
+# checking the minimum space required
 #
 #**************************************************************
 _minimum_free_size(){
@@ -84,6 +95,34 @@ _minimum_free_size(){
     else
         log_message "$L_ERRO" " $MSG_SPACE_NOT_FREE $1" 
         return 1 
+    fi
+}
+
+#**************************************************************
+# enable the database service
+#
+#**************************************************************
+_start_db_service() { 
+    if systemctl is-active --quiet "$DB_SVC_NAME"; then
+        log_message "$L_INFO" "$DB_SVC_NAME $ALREADY_STARTED_MSG"
+    else
+        log_message "$L_INFO" "$START_MSG"
+        sudo systemctl start "$DB_SVC_NAME"
+        log_message "$L_SCES" "$DB_SVC_NAME $STARTED_MSG"
+    fi
+}
+
+#**************************************************************
+# disable the database service
+#
+#**************************************************************
+_stop_db_service() {
+    if systemctl is-active --quiet "$DB_SVC_NAME"; then
+        log_message "$L_INFO" "$STOP_MSG"
+        sudo systemctl stop "$DB_SVC_NAME"
+        log_message "$L_SCES" "$DB_SVC_NAME $STOPPED_MSG"
+    else
+        log_message "$L_INFO" "$DB_SVC_NAME $ALREADY_STOPPED_MSG"
     fi
 }
 
