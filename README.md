@@ -55,7 +55,7 @@ To keep track of changes to the project, see [CHANGELOG](https://github.com/irma
 
 ## Contributing
 
-Instructions for those who want to contribute to your project. This can include guidelines for submitting issues, creating pull requests, and any coding standards.
+Instructions for those who want to contribute to this project. This can include guidelines for submitting issues, creating pull requests, and any coding standards.
 
 Please see  [CONTRIBUTING](https://github.com/irmaodejesus/SYSADMIN.FirebirdBck/blob/d8346a53c60b7fc8fc1a28178c07ea928b8e02ea/CONTRIBUTING.md)  for more details.
 
